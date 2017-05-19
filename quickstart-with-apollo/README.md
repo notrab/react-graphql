@@ -16,7 +16,7 @@ For more information on how to get started [refer to the full react-apollo-insta
 
 ```sh
 git clone https://github.com/graphcool-examples/react.git
-cd angular/quickstart-with-apollo
+cd react/quickstart-with-apollo
 ```
 
 ### 2. Create GraphQL API with [`graphcool`](https://www.npmjs.com/package/graphcool)
