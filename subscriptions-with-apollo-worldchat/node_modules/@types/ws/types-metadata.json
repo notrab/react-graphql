@@ -1,0 +1,33 @@
+{
+    "name": "ws",
+    "libraryName": "ws",
+    "sourceRepoURL": "https://www.github.com/DefinitelyTyped/DefinitelyTyped",
+    "data": {
+        "authors": "Paul Loyd <https://github.com/loyd>",
+        "dependencies": {
+            "events": "*",
+            "http": "*",
+            "https": "*",
+            "net": "*",
+            "node": "*"
+        },
+        "pathMappings": {},
+        "libraryMajorVersion": 0,
+        "libraryMinorVersion": 0,
+        "typeScriptVersion": "2.0",
+        "libraryName": "ws",
+        "typingsPackageName": "ws",
+        "projectName": "https://github.com/einaros/ws",
+        "sourceRepoURL": "https://www.github.com/DefinitelyTyped/DefinitelyTyped",
+        "globals": [],
+        "declaredModules": [
+            "ws/."
+        ],
+        "files": [
+            "index.d.ts"
+        ],
+        "hasPackageJson": false,
+        "contentHash": "925c01d4816bdf43529c0313361d3093629c25b467665de3617383fdb0578d92"
+    },
+    "isLatest": true
+}

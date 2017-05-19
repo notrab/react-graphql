@@ -1,0 +1,10 @@
+declare const SUBSCRIPTION_FAIL = "subscription_fail";
+declare const SUBSCRIPTION_END = "subscription_end";
+declare const SUBSCRIPTION_DATA = "subscription_data";
+declare const SUBSCRIPTION_START = "subscription_start";
+declare const SUBSCRIPTION_SUCCESS = "subscription_success";
+declare const KEEPALIVE = "keepalive";
+declare const INIT = "init";
+declare const INIT_SUCCESS = "init_success";
+declare const INIT_FAIL = "init_fail";
+export { SUBSCRIPTION_DATA, SUBSCRIPTION_END, SUBSCRIPTION_FAIL, SUBSCRIPTION_START, SUBSCRIPTION_SUCCESS, KEEPALIVE, INIT, INIT_FAIL, INIT_SUCCESS };

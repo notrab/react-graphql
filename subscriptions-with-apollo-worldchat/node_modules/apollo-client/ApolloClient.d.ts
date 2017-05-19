@@ -1,0 +1,55 @@
+import { NetworkInterface } from './transport/networkInterface';
+import { ApolloStore, ApolloReducerConfig, Store } from './store';
+import { CustomResolverMap } from './data/readFromStore';
+import { QueryManager } from './core/QueryManager';
+import { ApolloQueryResult, ResultComparator, ResultTransformer, IdGetter } from './core/types';
+import { ObservableQuery } from './core/ObservableQuery';
+import { Observable } from './util/Observable';
+import { WatchQueryOptions, SubscriptionOptions, MutationOptions } from './core/watchQueryOptions';
+export declare type ApolloStateSelector = (state: any) => Store;
+export default class ApolloClient {
+    networkInterface: NetworkInterface;
+    store: ApolloStore;
+    reduxRootKey: string;
+    reduxRootSelector: ApolloStateSelector | null;
+    initialState: any;
+    queryManager: QueryManager;
+    reducerConfig: ApolloReducerConfig;
+    addTypename: boolean;
+    resultTransformer: ResultTransformer | undefined;
+    resultComparator: ResultComparator | undefined;
+    shouldForceFetch: boolean;
+    dataId: IdGetter | undefined;
+    fieldWithArgs: (fieldName: string, args?: Object) => string;
+    version: string;
+    queryDeduplication: boolean;
+    private devToolsHookCb;
+    constructor(options?: {
+        networkInterface?: NetworkInterface;
+        reduxRootKey?: string;
+        reduxRootSelector?: string | ApolloStateSelector;
+        initialState?: any;
+        dataIdFromObject?: IdGetter;
+        resultTransformer?: ResultTransformer;
+        resultComparator?: ResultComparator;
+        ssrMode?: boolean;
+        ssrForceFetchDelay?: number;
+        addTypename?: boolean;
+        customResolvers?: CustomResolverMap;
+        connectToDevTools?: boolean;
+        queryDeduplication?: boolean;
+    });
+    watchQuery<T>(options: WatchQueryOptions): ObservableQuery<T>;
+    query<T>(options: WatchQueryOptions): Promise<ApolloQueryResult<T>>;
+    mutate<T>(options: MutationOptions): Promise<ApolloQueryResult<T>>;
+    subscribe(options: SubscriptionOptions): Observable<any>;
+    reducer(): Function;
+    __actionHookForDevTools(cb: Function): void;
+    middleware: () => (store: ApolloStore) => (next: any) => (action: any) => any;
+    initStore(): void;
+    resetStore(): void;
+    getInitialState(): {
+        data: Object;
+    };
+    private setStore(store);
+}

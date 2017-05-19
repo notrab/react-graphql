@@ -1,0 +1,12 @@
+type Post {
+  id: ID!
+  createdAt: DateTime
+  updatedAt: DateTime
+  description: String!
+  image: File @relation(name: "PostImage")
+}
+
+type File {
+  url: String!
+  post: Post @relation(name: "PostImage")
+}
