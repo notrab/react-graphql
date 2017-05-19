@@ -15,8 +15,8 @@ For more information on how to get started [refer to the full react-relay-instag
 ### 1. Clone example repository
 
 ```sh
-git clone https://github.com/graphcool-examples/react-relay-instagram-example.git
-cd react-relay-instagram-example
+git clone https://github.com/graphcool-examples/react.git
+cd angular/quickstart-with-relay
 ```
 
 ### 2. Create GraphQL API with [`graphcool`](https://www.npmjs.com/package/graphcool)
@@ -26,7 +26,7 @@ cd react-relay-instagram-example
 npm install -g graphcool
 
 # Create a new project based on the Instagram schema
-graphcool init --url graph.cool/schema/instagram 
+graphcool init --schema https://graphqlbin.com/instagram.graphql 
 ```
 
 This creates a GraphQL API for the following schema:
@@ -71,9 +71,9 @@ yarn start # open http://localhost:3000 in your browser
 
 ## Next steps
 
-* [Advanced GraphQL features](x)
-* [Authentication & Permissions](x)
-* [Implementing business logic with serverless functions](x)
+* [Advanced GraphQL features](https://www.graph.cool/docs/tutorials/advanced-features-eath7duf7d/)
+* [Authentication & Permissions](https://www.graph.cool/docs/reference/authorization/overview-iegoo0heez/)
+* [Implementing business logic with serverless functions](https://www.graph.cool/docs/reference/functions/overview-boo6uteemo/)
 
 
 ## Help & Community [![Slack Status](https://slack.graph.cool/badge.svg)](https://slack.graph.cool)
