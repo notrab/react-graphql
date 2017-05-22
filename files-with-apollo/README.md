@@ -41,12 +41,36 @@ type File {
 
 ### 3. Connect the app with your GraphQL API
 
+#### 3.1. Simple API
+
 Copy the `Simple API` endpoint to `./src/index.js` as the `uri` argument in the `createNetworkInterface` call:
 
 ```js
 // replace `__SIMPLE_API_ENDPOINT__` with the endpoint from the previous step
 const networkInterface = createNetworkInterface({ uri: '__SIMPLE_API_ENDPOINT__' })
 ```
+
+#### 3.2. File API
+
+Copy the endpoint for the `File API` into the call to fetch in `./src/components/CreatePage.js` replacing the current placeholder ``__FILE_API_ENDPOINT__` (in the method `onDrop`):
+
+```js
+// use the file endpoint
+fetch('__FILE_API_ENDPOINT__', {
+  method: 'POST',
+  body: data
+}).then(response => {
+  return response.json()
+}).then(image => {
+  this.setState({
+    imageId: image.id,
+    imageUrl: image.url,
+  })
+})
+```
+
+You can obtain the `File API` endpoint by calling `graphcool endpoints` in the same directory where you called `graphcool init --schema https://graphqlbin.com/insta-files.graphql` before or by clicking the **Endpoints** button in the bottom-left of the [Graphcool Console](https://console.graph.cool).
+
 
 ### 4. Install depdendencies & run locally
 

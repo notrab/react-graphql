@@ -51,7 +51,7 @@ class CreatePage extends React.Component {
     data.append('data', files[0])
 
     // use the file endpoint
-    fetch(process.env.REACT_APP_GRAPHQL_ENDPOINT.replace('simple/', 'file/'), {
+    fetch('__FILE_API_ENDPOINT__', {
       method: 'POST',
       body: data
     }).then(response => {
