@@ -10,7 +10,7 @@ export function filter(doc: DocumentNode, data: any): any {
     root: any,
     args: any,
     context: any,
-    info: any
+    info: any,
   ) => {
     return root[info.resultKey];
   };
@@ -28,7 +28,7 @@ export function check(doc: DocumentNode, data: any): void {
     root: any,
     args: any,
     context: any,
-    info: any
+    info: any,
   ) => {
     if (!{}.hasOwnProperty.call(root, info.resultKey)) {
       throw new Error(`${info.resultKey} missing on ${root}`);
@@ -64,7 +64,7 @@ function createChainableTypeChecker(validate) {
     propName,
     componentName,
     location,
-    propFullName
+    propFullName,
   ) {
     componentName = componentName || ANONYMOUS;
     propFullName = propFullName || propName;
@@ -74,12 +74,12 @@ function createChainableTypeChecker(validate) {
         if (props[propName] === null) {
           return new PropTypeError(
             `The ${locationName} \`${propFullName}\` is marked as required ` +
-            `in \`${componentName}\`, but its value is \`null\`.`
+            `in \`${componentName}\`, but its value is \`null\`.`,
           );
         }
         return new PropTypeError(
           `The ${locationName} \`${propFullName}\` is marked as required in ` +
-          `\`${componentName}\`, but its value is \`undefined\`.`
+          `\`${componentName}\`, but its value is \`undefined\`.`,
         );
       }
       return null;

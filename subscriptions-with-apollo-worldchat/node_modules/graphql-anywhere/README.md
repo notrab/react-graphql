@@ -1,9 +1,9 @@
 # graphql-anywhere
 
 [![npm version](https://badge.fury.io/js/graphql-anywhere.svg)](https://badge.fury.io/js/graphql-anywhere)
-[![Build Status](https://travis-ci.org/apollostack/graphql-anywhere.svg?branch=master)](https://travis-ci.org/apollostack/graphql-anywhere)
+[![Build Status](https://travis-ci.org/apollographql/graphql-anywhere.svg?branch=master)](https://travis-ci.org/apollostack/graphql-anywhere)
 
-Run a GraphQL query anywhere, without a GraphQL server or a schema. Just pass in one resolver. Use it together with [graphql-tag](https://github.com/apollostack/graphql-tag).
+Run a GraphQL query anywhere, without a GraphQL server or a schema. Just pass in one resolver. Use it together with [graphql-tag](https://github.com/apollographql/graphql-tag).
 
 ```
 npm install graphql-anywhere graphql-tag

@@ -1,2 +1,1 @@
-;
 //# sourceMappingURL=watchQueryOptions.js.map

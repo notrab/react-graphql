@@ -55,7 +55,7 @@ const wsClient = new SubscriptionClient('__SUBSCRIPTIONS_API_ENDPOINT__')
 
 You can obtain the `Susbcriptions API` endpoint by calling `graphcool endpoints` in the same directory where you called `graphcool init --schema https://graphqlbin.com/insta-files.graphql` before or by clicking the **Endpoints** button in the bottom-left of the [Graphcool Console](https://console.graph.cool).
 
-### 4. Install depdendencies & run locally
+### 4. Install dedendencies & run locally
 
 You're done configuring the example application. Please run the following command and open [localhost:3000](http://localhost:3000) in your browser. 
 

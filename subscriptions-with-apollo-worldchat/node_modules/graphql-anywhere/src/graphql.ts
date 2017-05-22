@@ -29,7 +29,7 @@ export type Resolver = (
   rootValue: any,
   args: any,
   context: any,
-  info: ExecInfo
+  info: ExecInfo,
 ) => any;
 
 export type VariableMap = { [name: string]: any };
@@ -44,18 +44,18 @@ export type ExecContext = {
   resultMapper: ResultMapper;
   resolver: Resolver;
   fragmentMatcher: FragmentMatcher;
-}
+};
 
 
 export type ExecInfo = {
   isLeaf: boolean;
   resultKey: string;
-}
+};
 
 export type ExecOptions = {
   resultMapper?: ResultMapper;
   fragmentMatcher?: FragmentMatcher;
-}
+};
 
 // Based on graphql function from graphql-js:
 // graphql(
@@ -96,7 +96,7 @@ export function graphql(
   return executeSelectionSet(
     mainDefinition.selectionSet,
     rootValue,
-    execContext
+    execContext,
   );
 }
 
@@ -104,7 +104,7 @@ export function graphql(
 function executeSelectionSet(
   selectionSet: SelectionSetNode,
   rootValue: any,
-  execContext: ExecContext
+  execContext: ExecContext,
 ) {
   const {
     fragmentMap,
@@ -124,7 +124,7 @@ function executeSelectionSet(
       const fieldResult = executeField(
         selection,
         rootValue,
-        execContext
+        execContext,
       );
 
       const resultFieldKey = resultKeyNameFromField(selection);
@@ -152,7 +152,7 @@ function executeSelectionSet(
         const fragmentResult = executeSelectionSet(
           fragment.selectionSet,
           rootValue,
-          execContext
+          execContext,
         );
 
         merge(result, fragmentResult);
@@ -170,7 +170,7 @@ function executeSelectionSet(
 function executeField(
   field: FieldNode,
   rootValue: any,
-  execContext: ExecContext
+  execContext: ExecContext,
 ): any {
   const {
     variableValues: variables,
@@ -208,14 +208,14 @@ function executeField(
   return executeSelectionSet(
     field.selectionSet,
     result,
-    execContext
+    execContext,
   );
 }
 
 function executeSubSelectedArray(
   field,
   result,
-  execContext
+  execContext,
 ) {
   return result.map((item) => {
     // null value in array
@@ -232,7 +232,7 @@ function executeSubSelectedArray(
     return executeSelectionSet(
       field.selectionSet,
       item,
-      execContext
+      execContext,
     );
   });
 }

@@ -22,7 +22,7 @@ function isListValue(value) {
 function isEnumValue(value) {
     return value.kind === 'EnumValue';
 }
-function valueToObjectRepresentation(argObj, name, value, variables) {
+export function valueToObjectRepresentation(argObj, name, value, variables) {
     if (isIntValue(value) || isFloatValue(value)) {
         argObj[name.value] = Number(value.value);
     }

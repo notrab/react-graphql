@@ -1,82 +1,90 @@
-# Worldchat
+# Subscriptions Example (with React & Apollo)
 
 A realtime chat application that displays the locations of all the chat participants on a map.
 
 ![Worldchat](http://i.imgur.com/8cpv7Hi.png)
 
-You can run your own instance of the application by first creating a Graphcool backend and then running the app locally using `npm`.
+* [React](https://facebook.github.io/react/): Frontend framework for building user interfaces
+* [Apollo Client](https://github.com/apollographql/apollo-client): Fully-featured, production ready caching GraphQL client
+* [Graphcool](https://www.graph.cool): Flexible backend platform combining GraphQL + AWS Lambda
+
+## Getting Started
+
+Subscriptions allow you to bring realtime functionality into your app. You can learn more about subscriptions in our [docs](https://www.graph.cool/docs/reference/simple-api/subscriptions-aip7oojeiv/).
 
 
-## 1. Create a Graphcool backend [![graphql-up](http://static.graph.cool/images/graphql-up.svg)](https://www.graph.cool/graphql-up/new?source=https://raw.githubusercontent.com/graphcool-examples/worldchat-subscriptions-example/master/Worldchat.schema)
+### 1. Clone example repository
 
-You'll need the following GraphQL schema to get started with the Worlchat application:
+```sh
+git clone https://github.com/graphcool-examples/react.git
+cd react/subscriptions-with-apollo-worldchat
+```
+
+### 2. Create GraphQL API with [`graphcool`](https://www.npmjs.com/package/graphcool)
+
+```sh
+# Install Graphcool CLI
+npm install -g graphcool
+
+# Create a new project based on the Instagram schema
+graphcool init --schema https://graphqlbin.com/worldchat.graphql 
+```
+
+This creates a GraphQL API for the following schema:
 
 ```graphql
 type Traveller {
-  id: ID!
-  createdAt: DateTime!
-  updatedAt: DateTime!
   name: String!
   location: Location! @relation(name: "TravellerLocation")
   messages: [Message!]! @relation(name: "MessagesFromTraveller")
 }
 
 type Message {
-  id: ID!
-  createdAt: DateTime!
-  updatedAt: DateTime!
   text: String!
   sentBy: Traveller!  @relation(name: "MessagesFromTraveller")
 }
 
 type Location {
-  id: ID!
-  createdAt: DateTime!
-  updatedAt: DateTime!
   traveller: Traveller! @relation(name: "TravellerLocation")
   latitude: Float!
   longitude: Float!
 }
 ```
 
-We already included a [schema file](https://github.com/graphcool-examples/worldchat-subscriptions-example/blob/master/Worldchat.schema) in this git repository, so all you have to do is download or clone the repository and then use our [cli](https://www.npmjs.com/package/graphcool) to create your Graphcool project:
+### 3. Connect the app with your GraphQL API
 
-```sh
-git clone https://github.com/graphcool-examples/worldchat-subscriptions-example.git
-cd Worldchat
-graphcool create Worldchat.schema
-```
+#### 3.1. Simple API
 
-You can also create the data model manually in our [console](https://console.graph.cool).
-
-
-## 2. Connect the App to your backend
-
-In `App.js`, you need to adjust the URLs that are used to connect to the GraphQL server.
+Copy the `Simple API` endpoint to `./src/App.js` as the `uri` argument in the `createNetworkInterface` call:
 
 ```js
-const wsClient = new SubscriptionClient(`wss://subscriptions.graph.cool/v1/__YOUR PROJECT ID__`, {
-  reconnect: true,
-})
-
-const networkInterface = createNetworkInterface({
-  uri: 'https://api.graph.cool/simple/v1/__YOUR PROJECT ID__'
+const networkInterface = createNetworkInterface({ uri: '__SIMPLE_API_ENDPOINT__' })
 ```
 
-You can retrieve your project ID from our [console](https://console.graph.cool), just select the newly created `Worldchat` project, navigate to `Settings -> General` and copy the `Project Id` from there.
+#### 3.1. Susbcriptions API
 
-You can then run the app locally by starting it from the terminal:
+Copy the `Susbcriptions API` endpoint to `./src/App.js` as the argument for the constructor of the `SubscriptionClient`:
+
+```js
+const wsClient = new SubscriptionClient('__SUBSCRIPTIONS_API_ENDPOINT__')
+```
+
+You can obtain the `Susbcriptions API` endpoint by calling `graphcool endpoints` in the same directory where you called `graphcool init --schema https://graphqlbin.com/insta-files.graphql` before or by clicking the **Endpoints** button in the bottom-left of the [Graphcool Console](https://console.graph.cool).
+
+### 4. Install dedendencies & run locally
+
+You're done configuring the example application. Please run the following command and open [localhost:3000](http://localhost:3000) in your browser. 
 
 ```sh
-npm start
+yarn install
+yarn start
 ```
 
-Happy chatting! 💬🌎
+Make sure to open two or more tabs with the page to see subscriptions in action. Have fun exploring! 🎉
 
+### 5. Further resources
 
-## Resources
-
-This app demonstrates how to use the Graphcool subscription API using the Apollo client. you can find more about these technologies here:
+This app demonstrates how to use the Graphcool subscription API using Apollo Client. You can learn more about these technologies here:
 
 - [**Tutorial:** How to build a Real-Time Chat with GraphQL Subscriptions and Apollo](https://www.graph.cool/docs/tutorials/worldchat-subscriptions-example-ui0eizishe/)
 - [**Video:** How to build a Real-Time Chat with GraphQL Subscriptions and Apollo](https://www.youtube.com/watch?v=aSLF9f13o2c)

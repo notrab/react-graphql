@@ -17,6 +17,7 @@ export function replaceQueryResults(state, _a, config) {
         document: document,
         store: clonedState,
         dataIdFromObject: config.dataIdFromObject,
+        fragmentMatcherFunction: config.fragmentMatcher,
     });
 }
 //# sourceMappingURL=replaceQueryResults.js.map

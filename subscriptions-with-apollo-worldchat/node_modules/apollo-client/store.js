@@ -12,6 +12,7 @@ import { queries, } from './queries/store';
 import { mutations, } from './mutations/store';
 import { optimistic, getDataWithOptimisticResults, } from './optimistic-data/store';
 export { getDataWithOptimisticResults };
+import { isQueryResultAction, isMutationResultAction, isSubscriptionResultAction, } from './actions';
 var crashReporter = function (store) { return function (next) { return function (action) {
     try {
         return next(action);
@@ -22,6 +23,19 @@ var crashReporter = function (store) { return function (next) { return function 
         throw err;
     }
 }; }; };
+var createReducerError = function (error, action) {
+    var reducerError = { error: error };
+    if (isQueryResultAction(action)) {
+        reducerError.queryId = action.queryId;
+    }
+    else if (isSubscriptionResultAction(action)) {
+        reducerError.subscriptionId = action.subscriptionId;
+    }
+    else if (isMutationResultAction(action)) {
+        reducerError.mutationId = action.mutationId;
+    }
+    return reducerError;
+};
 export function createApolloReducer(config) {
     return function apolloReducer(state, action) {
         if (state === void 0) { state = {}; }
@@ -44,7 +58,7 @@ export function createApolloReducer(config) {
             return newState;
         }
         catch (reducerError) {
-            return __assign({}, state, { reducerError: reducerError });
+            return __assign({}, state, { reducerError: createReducerError(reducerError, action) });
         }
     };
 }
