@@ -1,5 +1,8 @@
 # React & GraphQL
 
+![alt-text-1]("https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/GraphQL_Logo.svg/1024px-GraphQL_Logo.svg.png "title-1") ![alt-text-2](http://imgur.com/vK9WNIc.png "title-2")
+
+
 <div>
     <div style="float:left;">
         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/GraphQL_Logo.svg/1024px-GraphQL_Logo.svg.png" height="100">
