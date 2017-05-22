@@ -6,8 +6,7 @@
 * [Apollo Client](https://github.com/apollographql/apollo-client): Fully-featured, production ready caching GraphQL client
 * [Graphcool](https://www.graph.cool): Flexible backend platform combining GraphQL + AWS Lambda
 
-
-You can read the **full tutorial** about this example [here](https://www.graph.cool/docs/tutorials/react-apollo-auth0-pheiph4ooj/).
+You can read the **full tutorial** about this example [here](https://www.graph.cool/docs/tutorials/react-apollo-auth0-pheiph4ooj/) or try out the [hosted version](http://apollo-auth0.netlify.com).
 
 ## Getting Started
 
