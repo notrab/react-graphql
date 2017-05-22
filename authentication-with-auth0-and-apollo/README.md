@@ -53,17 +53,17 @@ As we want to restrict the creation of posts only to _authenticated_ users, we h
 
 <img src="http://imgur.com/VwEazGR.png" height=400>
 
-### Auth0 Configuration
+### 3. Auth0 Configuration
 
 In this step we will connect the Graphcool project to your Auth0 account.
 
-#### 2.1 Create new Auth0 client
+#### 3.1 Create new Auth0 client
 
 Go to the [Auth0 website](https://auth0.com/) and log into your Auth0 account. Create a new **Client** and choose **Single Page Application**. Copy your **domain**, the **client id** and the **client secret** from the settings of the new client.
 
 Make sure to add `http://localhost:3000` to the _allowed callback URLs_ as well.
 
-### 2.2 Configure Auth0 with Graphcool
+### 3.2 Configure Auth0 with Graphcool
 
 Back in the [console](https://console.graph.cool), open the **Integrations** tab in the side-menu and click on the Auth0 integration.
 
@@ -72,7 +72,7 @@ Now copy over your **domain**, **client id** and **client secret** from the prev
 ![](http://imgur.com/xW0rCSM.png)
 
 
-### 3. Connect the app with your GraphQL API
+### 4. Connect the app with your GraphQL API
 
 Copy the `Simple API` endpoint to `./src/index.js` as the `uri` argument in the `createNetworkInterface` call:
 
@@ -80,7 +80,7 @@ Copy the `Simple API` endpoint to `./src/index.js` as the `uri` argument in the 
 const networkInterface = createNetworkInterface({ uri: '__SIMPLE_API_ENDPOINT__' })
 ```
 
-### 4. Install depdendencies & run locally
+### 5. Install depdendencies & run locally
 
 ```sh
 yarn install
