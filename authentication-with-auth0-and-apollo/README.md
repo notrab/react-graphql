@@ -18,7 +18,7 @@ git clone https://github.com/graphcool-examples/react.git
 cd react/authentication-with-auth0-and-apollo
 ```
 
-### 2. Setting up the Graphcool projects
+### 2. Setting up the Graphcool project
 
 #### 2.1. Create GraphQL API with [`graphcool`](https://www.npmjs.com/package/graphcool)
 
@@ -27,7 +27,7 @@ cd react/authentication-with-auth0-and-apollo
 npm install -g graphcool
 
 # Create a new project based on the Instagram schema
-graphcool init --schema https://graphqlbin.com/instagram.graphql 
+graphcool init --schema https://graphqlbin.com/insta-auth0.graphql 
 ```
 
 This creates a GraphQL API for the following schema:
@@ -51,7 +51,7 @@ To make our application behave correctly we have to setup permissions for the `P
 
 As we want to restrict the creation of posts only to _authenticated_ users, we have to create the according permission for `CREATE` on the `Post` type.
 
-![](http://imgur.com/VwEazGR.png)
+<img src="http://imgur.com/VwEazGR.png" height=400>
 
 ### Auth0 Configuration
 
@@ -69,7 +69,7 @@ Back in the [console](https://console.graph.cool), open the **Integrations** tab
 
 Now copy over your **domain**, **client id** and **client secret** from the previous step into the corresponding fields:
 
-![](./http://imgur.com/xW0rCSM.png)
+![](http://imgur.com/xW0rCSM.png)
 
 
 ### 3. Connect the app with your GraphQL API
