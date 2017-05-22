@@ -5,8 +5,7 @@ import CreatePost from './components/CreatePost'
 import CreateUser from './components/CreateUser'
 import LoginUser from './components/LoginUser'
 import { Router, Route, browserHistory } from 'react-router'
-import ApolloClient, { createNetworkInterface } from 'apollo-client'
-import { ApolloProvider } from 'react-apollo'
+import { ApolloClient, ApolloProvider, createNetworkInterface } from 'react-apollo'
 import 'tachyons'
 
 const networkInterface = createNetworkInterface({ uri: '__SIMPLE_API_ENDPOINT__' })

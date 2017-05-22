@@ -1,7 +1,6 @@
 import React from 'react'
-import { graphql } from 'react-apollo'
+import { graphql, gql } from 'react-apollo'
 import { withRouter } from 'react-router'
-import gql from 'graphql-tag'
 import ListPage from './ListPage'
 import NewPostLink from './NewPostLink'
 
@@ -98,4 +97,4 @@ const userQuery = gql`
   }
 `
 
-export default graphql(userQuery, { options: {forceFetch: true }})(withRouter(App))
+export default graphql(userQuery, { options: {fetchPolicy: 'network-only'}})(withRouter(App))
