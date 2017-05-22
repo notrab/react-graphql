@@ -5,8 +5,7 @@ import { GoogleMap, withGoogleMap, Marker, InfoWindow } from 'react-google-maps'
 import withScriptjs from "react-google-maps/lib/async/withScriptjs"
 import Chat from './Chat'
 import Banner from './Banner'
-import gql from 'graphql-tag'
-import { withApollo, graphql } from 'react-apollo'
+import { withApollo, graphql, gql } from 'react-apollo'
 
 const allLocations = gql`
     query allLocations {

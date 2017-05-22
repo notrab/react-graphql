@@ -3,8 +3,7 @@ import './Chat.css'
 import ChatInput from './ChatInput'
 import ChatMessages from './ChatMessages'
 import TravellerCount from './TravellerCount'
-import { graphql } from 'react-apollo'
-import gql from 'graphql-tag'
+import { graphql, gql } from 'react-apollo'
 
 const createMessage = gql`
     mutation createMessage($text: String!, $sentById: ID!) {

@@ -12,7 +12,7 @@
     "react-dom": "^15.4.2",
     "react-google-maps": "beta",
     "sillyname": "^0.1.0",
-    "subscriptions-transport-ws": "^0.5.4"
+    "subscriptions-transport-ws": "^0.6.0"
   },
   "scripts": {
     "start": "react-scripts start",

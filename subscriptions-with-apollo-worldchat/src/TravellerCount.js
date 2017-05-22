@@ -1,7 +1,6 @@
 import React, { Component} from 'react'
 import './TravellerCount.css'
-import { graphql } from 'react-apollo'
-import gql from 'graphql-tag'
+import { graphql, gql } from 'react-apollo'
 
 const allTravellersCount = gql`
     query allTravellersCount {
