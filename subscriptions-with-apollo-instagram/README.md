@@ -1,5 +1,8 @@
 # Subscriptions Example (with React & Apollo)
 
+* [React](https://facebook.github.io/react/): Frontend framework for building user interfaces
+* [Apollo Client](https://github.com/apollographql/apollo-client): Fully-featured, production ready caching GraphQL client
+* [Graphcool](https://www.graph.cool): Flexible backend platform combining GraphQL + AWS Lambda
 
 ## Getting Started
 
