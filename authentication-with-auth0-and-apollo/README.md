@@ -1,36 +1,97 @@
-# react-apollo-auth0-example
-![](http://i.imgur.com/CH44AZF.png)
+# Auth0 Example (with React & Apollo)
 
-Try the [hosted version](http://apollo-auth0.netlify.com).
+<img src="http://openid.net/wordpress-content/uploads/2016/05/auth0-logo-blue.png" height=50>
+
+* [Auth0](https://auth0.com/): Powerful authentication provider
+* [Apollo Client](https://github.com/apollographql/apollo-client): Fully-featured, production ready caching GraphQL client
+* [Graphcool](https://www.graph.cool): Flexible backend platform combining GraphQL + AWS Lambda
+
+
+You can read the **full tutorial** about this example [here](https://www.graph.cool/docs/tutorials/react-apollo-auth0-pheiph4ooj/).
 
 ## Getting Started
 
-After [downloading this example](https://github.com/graphcool-examples/react-apollo-auth0-example/archive/master.zip) please follow the steps detailed in [the online guide](https://www.graph.cool/docs/tutorials/react-apollo-auth0-pheiph4ooj).
-
-A short summary is given below.
-
-### 1. Create an account
-
-To run this example, please create a [graph.cool](http://graph.cool) account and **copy your endpoint**. This shouldn't take longer than a minute. We promise!
-
-![](http://i.imgur.com/ytXDR4B.gif)
-
-### 2. Configure app data endpoint
-
-Open `src/index.js` and paste your endpoint to the following line:
-
-```js
-const networkInterface = createNetworkInterface({ uri: 'https://api.graph.cool/simple/v1/__PROJECT_ID__' })
-```
-
-### 3. Run the example
-
-You're done configuring the example application. Please run the following command and open [localhost:3000](http://localhost:3000) in your browser. Have fun exploring! 🎉
+### 1. Clone example repository
 
 ```sh
-npm install
-npm start
+git clone https://github.com/graphcool-examples/react.git
+cd react/authentication-with-auth0-and-apollo
 ```
+
+### 2. Setting up the Graphcool projects
+
+#### 2.1. Create GraphQL API with [`graphcool`](https://www.npmjs.com/package/graphcool)
+
+```sh
+# Install Graphcool CLI
+npm install -g graphcool
+
+# Create a new project based on the Instagram schema
+graphcool init --schema https://graphqlbin.com/instagram.graphql 
+```
+
+This creates a GraphQL API for the following schema:
+
+```graphql
+type Post {
+  description: String!
+  imageUrl: String!
+}
+
+type User {
+  name: String!
+  emailAddress: String!
+  emailSubscription: Boolean!
+}
+```
+
+#### 2.2 Setting the permissions
+
+To make our application behave correctly we have to setup permissions for the `Post` type in our project. Select the **Permissions** tab in the side-menu of the [Graphcool Console](https://console.graph.cool).
+
+As we want to restrict the creation of posts only to _authenticated_ users, we have to create the according permission for `CREATE` on the `Post` type.
+
+![](http://imgur.com/VwEazGR.png)
+
+### Auth0 Configuration
+
+In this step we will connect the Graphcool project to your Auth0 account.
+
+#### 2.1 Create new Auth0 client
+
+Go to the [Auth0 website](https://auth0.com/) and log into your Auth0 account. Create a new **Client** and choose **Single Page Application**. Copy your **domain**, the **client id** and the **client secret** from the settings of the new client.
+
+Make sure to add `http://localhost:3000` to the _allowed callback URLs_ as well.
+
+### 2.2 Configure Auth0 with Graphcool
+
+Back in the [console](https://console.graph.cool), open the **Integrations** tab in the side-menu and click on the Auth0 integration.
+
+Now copy over your **domain**, **client id** and **client secret** from the previous step into the corresponding fields:
+
+![](./http://imgur.com/xW0rCSM.png)
+
+
+### 3. Connect the app with your GraphQL API
+
+Copy the `Simple API` endpoint to `./src/index.js` as the `uri` argument in the `createNetworkInterface` call:
+
+```js
+const networkInterface = createNetworkInterface({ uri: '__SIMPLE_API_ENDPOINT__' })
+```
+
+### 4. Install depdendencies & run locally
+
+```sh
+yarn install
+yarn start # open http://localhost:3000 in your browser
+```
+
+## Next steps
+
+* [Advanced GraphQL features](https://www.graph.cool/docs/tutorials/advanced-features-eath7duf7d/)
+* [Authentication & Permissions](https://www.graph.cool/docs/reference/authorization/overview-iegoo0heez/)
+* [Implementing business logic with serverless functions](https://www.graph.cool/docs/reference/functions/overview-boo6uteemo/)
 
 
 ## Help & Community [![Slack Status](https://slack.graph.cool/badge.svg)](https://slack.graph.cool)
