@@ -1,6 +1,6 @@
 # React & GraphQL
 
-![alt-text-1](http://imgur.com/LlNSEaY.png) ![alt-text-2](http://imgur.com/idg4NOG.png)
+![](http://imgur.com/ABY3pnb) ![](http://imgur.com/LlNSEaY.png) ![](http://imgur.com/idg4NOG.png)
 
 This repository contains a variety of sample projects demonstrating how to get started with React & GraphQL in different use cases.
 
