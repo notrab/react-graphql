@@ -1,5 +1,4 @@
-# react-apollo-instagram-example
-![](http://i.imgur.com/CH44AZF.png)
+# Subscriptions Example (with React & Apollo)
 
 
 ## Getting Started
