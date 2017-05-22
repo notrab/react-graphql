@@ -98,4 +98,4 @@ const userQuery = gql`
   }
 `
 
-export default graphql(userQuery, { options: {forceFetch: true }})(withRouter(App))
+export default graphql(userQuery, { options: {fetchPolicy: 'network-only'}})(withRouter(App))

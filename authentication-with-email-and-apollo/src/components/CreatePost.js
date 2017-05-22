@@ -79,5 +79,5 @@ const userQuery = gql`
 `
 
 export default graphql(createPost)(
-  graphql(userQuery, { options: { forceFetch: true }} )(withRouter(CreatePost))
+  graphql(userQuery, { options: { fetchPolicy: 'network-only' }} )(withRouter(CreatePost))
 )
