@@ -3,12 +3,11 @@ import ReactDOM from 'react-dom'
 import ListPage from './components/ListPage'
 import CreatePage from './components/CreatePage'
 import { Router, Route, browserHistory } from 'react-router'
-import ApolloClient, { createNetworkInterface } from 'apollo-client'
-import { ApolloProvider } from 'react-apollo'
+import { ApolloProvider, ApolloClient, createNetworkInterface } from 'react-apollo'
 import 'tachyons'
 import './index.css'
 
-const networkInterface = createNetworkInterface({ uri: process.env.REACT_APP_GRAPHQL_ENDPOINT })
+const networkInterface = createNetworkInterface({ uri: '__SIMPLE_API_ENDPOINT__' })
 
 const client = new ApolloClient({ networkInterface })
 

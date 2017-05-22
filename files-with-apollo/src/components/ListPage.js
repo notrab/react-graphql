@@ -1,8 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router'
 import Post from '../components/Post'
-import { graphql } from 'react-apollo'
-import gql from 'graphql-tag'
+import { graphql, gql } from 'react-apollo'
 
 class ListPage extends React.Component {
 

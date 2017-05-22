@@ -1,44 +1,65 @@
-# react-apollo-file-upload-example
-![](http://i.imgur.com/CH44AZF.png)
+# React & Apollo File Upload Example
+
+* [React](https://facebook.github.io/react/): Frontend framework for building user interfaces
+* [Apollo Client](https://github.com/apollographql/apollo-client): Fully-featured, production ready caching GraphQL client
+* [Graphcool](https://www.graph.cool): Flexible backend platform combining GraphQL + AWS Lambda
+* 
 
 ## Getting Started
 
-After [downloading this example](https://github.com/graphcool-examples/react-apollo-file-upload-example/archive/master.zip) please follow these steps!
+You can learn more about file management with Graphcool in our [documentation](https://www.graph.cool/docs/reference/file-handling/overview-eer4wiang0/).
 
-### 1. Create an account
+### 1. Clone example repository
 
-To run this example, please create a [Graphcool](http://graph.cool) account and **copy your endpoint**. This shouldn't take longer than a minute. We promise!
+```sh
+git clone https://github.com/graphcool-examples/react.git
+cd react/quickstart-with-apollo
+```
 
-![](http://i.imgur.com/ytXDR4B.gif)
+### 2. Create GraphQL API with [`graphcool`](https://www.npmjs.com/package/graphcool)
 
-This is how our GraphQL data model looks like:
+```sh
+# Install Graphcool CLI
+npm install -g graphcool
+
+# Create a new project based on the Instagram schema
+graphcool init --schema https://graphqlbin.com/insta-files.graphql 
+```
+
+This creates a GraphQL API for the following schema:
 
 ```graphql
 type Post {
   description: String!
-  image: File!
+  image: File @relation(name: "PostImage")
 }
 
-# The File model is already part of your new project
 type File {
-  url: String!
+  post: Post @relation(name: "PostImage")
 }
 ```
 
-### 2. Configure your GraphQL Endpoint
+### 3. Connect the app with your GraphQL API
 
-```sh
-export REACT_APP_GRAPHQL_ENDPOINT="https://api.graph.cool/simple/v1/__PROJECT_ID__"
+Copy the `Simple API` endpoint to `./src/index.js` as the `uri` argument in the `createNetworkInterface` call:
+
+```js
+// replace `__SIMPLE_API_ENDPOINT__` with the endpoint from the previous step
+const networkInterface = createNetworkInterface({ uri: '__SIMPLE_API_ENDPOINT__' })
 ```
 
-### 3. Run the example
-
-You're done configuring the example application. Please run the following command and open [localhost:3000](http://localhost:3000) in your browser. Have fun exploring! 🎉
+### 4. Install depdendencies & run locally
 
 ```sh
-npm install
-npm start
+yarn install
+yarn start # open http://localhost:3000 in your browser
 ```
+
+## Next steps
+
+* [Advanced GraphQL features](https://www.graph.cool/docs/tutorials/advanced-features-eath7duf7d/)
+* [Authentication & Permissions](https://www.graph.cool/docs/reference/authorization/overview-iegoo0heez/)
+* [Implementing business logic with serverless functions](https://www.graph.cool/docs/reference/functions/overview-boo6uteemo/)
 
 
 ## Help & Community [![Slack Status](https://slack.graph.cool/badge.svg)](https://slack.graph.cool)
