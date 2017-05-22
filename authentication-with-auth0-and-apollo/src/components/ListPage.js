@@ -1,7 +1,6 @@
 import React from 'react'
 import Post from '../components/Post'
-import { graphql } from 'react-apollo'
-import gql from 'graphql-tag'
+import { graphql, gql } from 'react-apollo'
 
 class ListPage extends React.Component {
 
@@ -34,4 +33,4 @@ const FeedQuery = gql`query FeedQuery {
   }
 }`
 
-export default graphql(FeedQuery, { options: {forceFetch: true }})(ListPage)
+export default graphql(FeedQuery, { options: {fetchPolicy: 'network-only'}})(ListPage)

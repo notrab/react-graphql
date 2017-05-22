@@ -4,11 +4,10 @@ import App from './components/App'
 import CreatePost from './components/CreatePost'
 import CreateUser from './components/CreateUser'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
-import ApolloClient, { createNetworkInterface } from 'apollo-client'
-import { ApolloProvider } from 'react-apollo'
+import { ApolloClient, ApolloProvider, createNetworkInterface } from 'react-apollo'
 import 'tachyons'
 
-const networkInterface = createNetworkInterface({ uri: 'https://api.graph.cool/simple/v1/__PROJECT_ID__' })
+const networkInterface = createNetworkInterface({ uri: '__SIMPLE_API_ENDPOINT__' })
 
 // use the auth0IdToken in localStorage for authorized requests
 networkInterface.use([{

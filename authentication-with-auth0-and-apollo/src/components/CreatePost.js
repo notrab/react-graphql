@@ -1,7 +1,6 @@
 import React from 'react'
 import { withRouter, Redirect } from 'react-router-dom'
-import { graphql } from 'react-apollo'
-import gql from 'graphql-tag'
+import { graphql, gql } from 'react-apollo'
 
 class CreatePost extends React.Component {
 
@@ -100,5 +99,5 @@ export default graphql(createPost, {
     }
   }
 })(
-  graphql(userQuery, { options: { forceFetch: true }} )(withRouter(CreatePost))
+  graphql(userQuery, { options: {fetchPolicy: 'network-only'}} )(withRouter(CreatePost))
 )
