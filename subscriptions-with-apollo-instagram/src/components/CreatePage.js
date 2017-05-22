@@ -1,7 +1,6 @@
 import React from 'react'
 import { withRouter } from 'react-router'
-import { graphql } from 'react-apollo'
-import gql from 'graphql-tag'
+import { graphql, gql } from 'react-apollo'
 
 class CreatePage extends React.Component {
 

@@ -3,29 +3,18 @@ import ReactDOM from 'react-dom'
 import ListPage from './components/ListPage'
 import CreatePage from './components/CreatePage'
 import { Router, Route, browserHistory } from 'react-router'
-import ApolloClient, { createNetworkInterface } from 'apollo-client'
-import { ApolloProvider } from 'react-apollo'
+import { ApolloProvider, ApolloClient, createNetworkInterface } from 'react-apollo'
 import { SubscriptionClient, addGraphQLSubscriptions } from 'subscriptions-transport-ws'
 import 'tachyons'
 import './index.css'
 
-const wsClient = new SubscriptionClient('wss://subscriptions.graph.cool/v1/__PROJECT_ID__')
-const networkInterface = createNetworkInterface({
-  uri: 'https://api.graph.cool/simple/v1/__PROJECT_ID__',
-})
+// __SUBSCRIPTIONS_API_ENDPOINT_ looks similar to: `wss://subscriptions.graph.cool/v1/<PROJECT_ID>`
+const wsClient = new SubscriptionClient('__SUBSCRIPTIONS_API_ENDPOINT_')
 
-// The x-graphcool-source header is to let the server know that the example app has started.
-// (Not necessary for normal projects)
-networkInterface.use([{
-  applyMiddleware (req, next) {
-    if (!req.options.headers) {
-      // Create the header object if needed.
-      req.options.headers = {}
-    }
-    req.options.headers['x-graphcool-source'] = 'example:react-apollo-instagram-subscriptions'
-    next()
-  },
-}])
+// __SIMPLE_API_ENDPOINT_ looks similar to: `https://api.graph.cool/simple/v1/<PROJECT_ID>`
+const networkInterface = createNetworkInterface({
+  uri: '__SIMPLE_API_ENDPOINT_',
+})
 
 const networkInterfaceWithSubscriptions = addGraphQLSubscriptions(
   networkInterface,

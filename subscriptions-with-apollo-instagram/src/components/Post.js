@@ -1,6 +1,5 @@
 import React from 'react'
-import { graphql } from 'react-apollo'
-import gql from 'graphql-tag'
+import { graphql, gql } from 'react-apollo'
 
 class Post extends React.Component {
 

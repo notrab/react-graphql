@@ -1,8 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router'
 import Post from '../components/Post'
-import { graphql } from 'react-apollo'
-import gql from 'graphql-tag'
+import { graphql, gql } from 'react-apollo'
 
 class ListPage extends React.Component {
 
@@ -37,14 +36,14 @@ class ListPage extends React.Component {
         `,
         variables: null,
 
-        // this is where the magic happens.
+        // this is where the magic happens
         updateQuery: (previousState, {subscriptionData}) => {
-          const newEntry = subscriptionData.data.Post.node
+          const newPost = subscriptionData.data.Post.node
 
           return {
             allPosts: [
               {
-                ...newEntry
+                ...newPost
               },
               ...previousState.allPosts
             ]
