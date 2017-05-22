@@ -51,7 +51,7 @@ const networkInterface = createNetworkInterface({ uri: '__SIMPLE_API_ENDPOINT__'
 
 #### 3.2. File API
 
-Copy the endpoint for the `File API` into the call to fetch in `./src/components/CreatePage.js` replacing the current placeholder ``__FILE_API_ENDPOINT__` (in the method `onDrop`):
+Copy the endpoint for the `File API` into the call to fetch in `./src/components/CreatePage.js` replacing the current placeholder `__FILE_API_ENDPOINT__` (in the method `onDrop`):
 
 ```js
 // use the file endpoint
